@@ -1,0 +1,62 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "ed82d22aeab75e9ac413285431f39392",
+    "packages": [
+        {
+            "name": "aharen/pay",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aharen/Pay.git",
+                "reference": "1c5dd6228d16cbd5850fa221750b275c89095de3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aharen/Pay/zipball/1c5dd6228d16cbd5850fa221750b275c89095de3",
+                "reference": "1c5dd6228d16cbd5850fa221750b275c89095de3",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "aharen\\Pay\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Khusaam",
+                    "email": "hello@khusaam.com"
+                }
+            ],
+            "description": "Payment processing with Bank of Maldives/Maldives Payment Gateway (MPG) & Maldives Islamic Bank (MIB)",
+            "keywords": [
+                "Bank",
+                "MPG",
+                "bml",
+                "fisa",
+                "fisanet",
+                "gateway",
+                "maldives",
+                "mib",
+                "payment"
+            ],
+            "time": "2017-03-08T20:00:29+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
