@@ -21,3 +21,7 @@ if(!defined('MERCH_PASS')) {
 if(!defined('BML_GATEWAY_END_POINT')) {
     define('BML_GATEWAY_END_POINT', "https://pay.mv");
 }
+
+if(!defined('MY_CALLBACK_URI')) {
+    define('MY_CALLBACK_URI', "http://localhost:8036/process-callback.php");
+}

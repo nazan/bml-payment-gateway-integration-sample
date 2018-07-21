@@ -12,12 +12,10 @@ $_SESSION['txnId'] = $txnId;
 $txnAmount = rand(2, 10000); // Simulating transaction amount.
 $_SESSION['MYORDER_'.$txnId] = $txnAmount;
 
-$callbackUrl = "http://localhost:8036/process-callback.php?txn_id=$txnId"; // replace here with your actual callback url.
-
 $config = [
     'Version'     => '1.1',
     'Host'        => BML_GATEWAY_END_POINT,
-    'MerRespURL'  => $callbackUrl,
+    'MerRespURL'  => MY_CALLBACK_URI,
     'AcqID'       => ACQ_ID,
     'MerID'       => MERCH_ID,
     'MerPassword' => MERCH_PASS
