@@ -1,8 +1,8 @@
 version: '2'
 services:
   bml-pay-sample:
-    image: php:5.6.36-apache-jessie
-    #image: php:7.1.20-cli-stretch
+    #image: php:5.6.36-apache-jessie
+    image: php:7.1.20-cli-stretch
     working_dir: /var/www/html
     volumes:
       - .:/var/www/html
