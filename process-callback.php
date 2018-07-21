@@ -16,19 +16,8 @@ $txnId = $_SESSION['txnId'];
 
 $txnAmount = $_SESSION['txnAmount'];
 
-$callbackUrl = "https://localhost:8036/process-callback.php"; // replace here with your actual callback url.
-
-$callbackUrl = str_replace('https:', 'http:', $callbackUrl);
-
-if(strpos($callbackUrl, '?') !== false) {
-    $callbackUrl .= '&';
-} else {
-    $callbackUrl .= '?';
-}
-
-$callbackUrl = $callbackUrl . "order_id=$orderId&txn_id=$txnId";
-
 $paymentGatewayUrl = "https://pay.mv";
+$callbackUrl = "http://localhost:8036/process-callback.php?order_id=$orderId&txn_id=$txnId"; // replace here with your actual callback url.
 
 // this initiates MPG
 $config = [
