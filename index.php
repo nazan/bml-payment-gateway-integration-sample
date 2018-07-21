@@ -1,36 +1,26 @@
 <?php
 
-session_start();
-
-require_once __DIR__.'/vendor/autoload.php';
-
-date_default_timezone_set('Indian/Maldives');
-
+require_once("init.php");
 
 use aharen\Pay\Gateway;
-use aharen\Pay\Exceptions\SignatureMissmatchException;
 
 $gateway = new Gateway('MPG');
 
-$orderId = rand(1000, 2000); // simulating an orderId;
-$_SESSION['orderId'] = $orderId;
-
-$txnId = $orderId.'_'.date("ymd"); // date suffix is not required.
+$txnId = rand(1000, 2000) . '_' . date("ymdHis"); // Simulating the transaction ID.
 $_SESSION['txnId'] = $txnId;
 
-$txnAmount = rand(2, 10000);
-$_SESSION['txnAmount'] = $txnAmount;
+$txnAmount = rand(2, 10000); // Simulating transaction amount.
+$_SESSION['MYORDER_'.$txnId] = $txnAmount;
 
-$paymentGatewayUrl = "https://pay.mv";
-$callbackUrl = "http://localhost:8036/process-callback.php?order_id=$orderId&txn_id=$txnId"; // replace here with your actual callback url.
+$callbackUrl = "http://localhost:8036/process-callback.php?txn_id=$txnId"; // replace here with your actual callback url.
 
 $config = [
     'Version'     => '1.1',
-    'Host'        => $paymentGatewayUrl,
+    'Host'        => BML_GATEWAY_END_POINT,
     'MerRespURL'  => $callbackUrl,
-    'AcqID'       => '2f88d37ac873',
-    'MerID'       => 'ab38293f3933',
-    'MerPassword' => 'password123'
+    'AcqID'       => ACQ_ID,
+    'MerID'       => MERCH_ID,
+    'MerPassword' => MERCH_PASS
 ];
 
 $gateway->config($config);
@@ -49,9 +39,11 @@ foreach($post_body_as_associative_array as $key => $value){
     $input_fields[] = "<input type='hidden' name='$key' value='$value'/>";
 }
 
-$postFormAsString = '<form action="'.$paymentGatewayUrl.'" method="post">
+$postFormAsString = '<form action="'.BML_GATEWAY_END_POINT.'" method="post">
     ' . implode('', $input_fields) . '
     <input type="submit" value="Pay via BML Payment Gateway" />
     </form>';
 
+echo "<p>You owe us: MVR $txnAmount</p>";
+echo "<p>Please click the button below, you will be redirected to the bank's payment page.</p>";
 echo $postFormAsString;
